@@ -8,12 +8,11 @@ import ReactTestRendererAdapter from '../';
 
 const expect = Unexpected.clone();
 
-const TestComponent = React.createClass({
-
+class TestComponent extends React.Component {
     render() {
         return <span>test</span>;
     }
-});
+}
 
 
 describe('ReactTestElementAdapter', () => {
@@ -95,7 +94,7 @@ describe('ReactTestElementAdapter', () => {
         it('gets an array with one numeric child', () => {
 
             const component = ReactTestRenderer.create(<span>{42}</span>);
-            expect(adapter.getChildren(component.toJSON()), 'to equal', [ 42 ]);
+            expect(adapter.getChildren(component.toJSON()), 'to equal', [ '42' ]);
         });
 
         it('gets an array with a component child', () => {
@@ -130,7 +129,7 @@ describe('ReactTestElementAdapter', () => {
             const component = ReactTestRenderer.create(<span>Hello {42} world</span>);
 
             expect(adapter.getChildren(component.toJSON()), 'to equal', [
-                'Hello ', 42, ' world'
+                'Hello ', '42', ' world'
             ]);
         });
 
@@ -164,7 +163,7 @@ describe('ReactTestElementAdapter', () => {
             ]);
         });
 
-        it('converts only raw content to strings', () => {
+        it('converts mixed content to strings', () => {
 
             const component = ReactTestRenderer.create(
                 <div>
@@ -175,8 +174,8 @@ describe('ReactTestElementAdapter', () => {
             adapter.setOptions({ convertToString: true });
 
             expect(adapter.getChildren(component.toJSON()), 'to equal', [
-                { type: 'span', props: {}, children: ['Hello world ', 21] },
-                { type: 'span', props: {}, children: [ 42 ] }
+                { type: 'span', props: {}, children: ['Hello world ', '21'] },
+                { type: 'span', props: {}, children: [ '42' ] }
             ]);
         });
 
@@ -188,26 +187,6 @@ describe('ReactTestElementAdapter', () => {
                 expect(adapter.getChildren(component.toJSON()), 'to equal', [
                     'Hello world ', '21'
                 ]);
-        });
-
-        it('leaves single raw content alone with `convertMultipleRawToStrings:true`', () => {
-
-            const component = ReactTestRenderer.create(<span>{21}</span>);
-            adapter.setOptions({ convertMultipleRawToStrings: true });
-
-            expect(adapter.getChildren(component.toJSON()), 'to equal', [
-                21
-            ]);
-        });
-
-        it('leaves content when there is only one item, after ignoring `null`s', () => {
-
-            const component = ReactTestRenderer.create(<span>{null}{21}</span>);
-            adapter.setOptions({ convertMultipleRawToStrings: true });
-
-            expect(adapter.getChildren(component.toJSON()), 'to equal', [
-                21
-            ]);
         });
 
         it('ignores the `key` attribute', () => {

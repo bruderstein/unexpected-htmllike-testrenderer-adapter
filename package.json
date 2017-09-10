@@ -13,15 +13,15 @@
   },
   "main": "lib/index.js",
   "peerDependencies": {
-    "react": "^0.14.0 || ^15.0.0"
+    "react": "^0.14.0 || ^15.0.0 || ^16.0.0-rc"
   },
   "devDependencies": {
     "babel": "^5.8.29",
     "immutable": "^3.7.6",
     "mocha": "^2.3.3",
     "object-assign": "^4.0.1",
-    "react": "^15.0.0",
-    "react-test-renderer": "^15.0.0",
+    "react": "^16.0.0-rc",
+    "react-test-renderer": "^16.0.0-rc",
     "test-peer-range": "^1.0.1",
     "unexpected": "^10.18.1"
   },
