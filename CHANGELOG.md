@@ -6,3 +6,6 @@ Initial version (adapted from the shallow renderer adapter)
 
 Add React 16-RC as peer dependency
 
+## v1.0.2
+
+Add React 16 official peer dep support

@@ -1,6 +1,6 @@
 {
   "name": "unexpected-htmllike-testrenderer-adapter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Adapter for unexpected-htmllike for react-test-renderer",
   "author": {
     "name": "Dave Brotherstone",
@@ -13,7 +13,7 @@
   },
   "main": "lib/index.js",
   "peerDependencies": {
-    "react": "^0.14.0 || ^15.0.0 || ^16.0.0-rc"
+    "react": "^0.14.0 || ^15.0.0 || ^16.0.0-rc || ^16.0.0"
   },
   "devDependencies": {
     "babel": "^5.8.29",
